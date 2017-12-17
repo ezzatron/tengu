@@ -3,6 +3,9 @@ import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Message from './components/message'
+import Root from './components/root'
 
-ReactDOM.render(<Message message='hey jortron' />, document.getElementById('app'))
+ReactDOM.render(
+  React.createElement(Root),
+  document.getElementById('app')
+)
