@@ -27,7 +27,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Tengu'
+      title: 'Tengu',
+      template: 'src/index.html'
     })
   ],
   devServer: {
