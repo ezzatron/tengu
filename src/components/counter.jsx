@@ -1,23 +1,27 @@
 import React from 'react'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 
-export default class Counter extends React.Component {
-  constructor (props) {
-    super(props)
+import {buttonPressed} from '../actions'
+import {getCount} from '../selectors'
 
-    this.state = {count: 0}
+export function Counter (props) {
+  const {count, buttonPressed} = props
 
-    this.onClick = () => {
-      this.setState({count: this.state.count + 1})
-    }
-  }
+  return <div>
+    <div>You've pressed the button {count} time(s).</div>
 
-  render () {
-    const {count} = this.state
-
-    return <div>
-      <div>You've pressed the button {count} time(s).</div>
-
-      <button onClick={this.onClick}>Press me</button>
-    </div>
-  }
+    <button onClick={buttonPressed}>Press me</button>
+  </div>
 }
+
+export default connect(
+  function mapStateToProps (state) {
+    return {
+      count: getCount(state)
+    }
+  },
+  function mapDispatchToProps (dispatch) {
+    return bindActionCreators({buttonPressed}, dispatch)
+  }
+)(Counter)
