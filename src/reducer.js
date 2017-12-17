@@ -1,23 +1,17 @@
-import {Map} from 'immutable'
+import {Record} from 'immutable'
 
 import * as actions from './actions'
 
-const init = Map({
-  weight: .00032279,
-  length: 25.5,
-  frequency: 82.4
+const AppState = Record({
+  stringSet: 'DADDARIO_EXL110'
 })
+
+const init = new AppState()
 
 export default function reducer (state = init, {type, payload}) {
   switch (type) {
-    case actions.SET_WEIGHT:
-      return state.set('weight', payload)
-
-    case actions.SET_LENGTH:
-      return state.set('length', payload)
-
-    case actions.SET_FREQUENCY:
-      return state.set('frequency', payload)
+    case actions.SET_STRING_SET:
+      return state.set('stringSet', payload)
   }
 
   return state

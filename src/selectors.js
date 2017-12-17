@@ -1,11 +1,5 @@
-export function getWeight (state) {
-  return state.get('weight')
-}
+import * as stringSets from './data/sets'
 
-export function getLength (state) {
-  return state.get('length')
-}
-
-export function getFrequency (state) {
-  return state.get('frequency')
+export function getStringSet (state) {
+  return stringSets[state.stringSet] || null
 }
