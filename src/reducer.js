@@ -1,17 +1,23 @@
 import {Map} from 'immutable'
 
-import {BUTTON_PRESSED} from './actions'
+import * as actions from './actions'
 
 const init = Map({
-  count: 0
+  weight: .00032279,
+  length: 25.5,
+  frequency: 82.4
 })
 
-export default function reducer (state = init, action) {
-  const {type, payload} = action
-
+export default function reducer (state = init, {type, payload}) {
   switch (type) {
-    case BUTTON_PRESSED:
-      return state.set('count', state.get('count') + 1)
+    case actions.SET_WEIGHT:
+      return state.set('weight', payload)
+
+    case actions.SET_LENGTH:
+      return state.set('length', payload)
+
+    case actions.SET_FREQUENCY:
+      return state.set('frequency', payload)
   }
 
   return state

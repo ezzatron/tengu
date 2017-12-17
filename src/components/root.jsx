@@ -1,13 +1,12 @@
 import React from 'react'
 import {Provider} from 'react-redux'
 
-import Counter from './counter'
-import Message from './message'
+import Tension from './tension'
 
 export default function Root (props) {
   const {store} = props
 
   return <Provider store={store}>
-    <Counter message='hey jortang' />
+    <Tension />
   </Provider>
 }
