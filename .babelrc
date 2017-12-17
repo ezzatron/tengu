@@ -1,0 +1,13 @@
+{
+  "presets": [
+    [
+      "env", {
+        "useBuiltIns": "entry",
+        "targets": {
+          "browsers": "last 2 versions",
+          "node": "current"
+        }
+      }
+    ]
+  ]
+}
