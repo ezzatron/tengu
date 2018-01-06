@@ -7,10 +7,12 @@
     "babel-preset-react": "^6.24.1",
     "html-webpack-plugin": "^2.30.1",
     "immutable": "^3.8.2",
+    "pitch-fq": "^1.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
+    "scientific-notation": "^1.0.2",
     "webpack": "^3.10.0"
   },
   "devDependencies": {
