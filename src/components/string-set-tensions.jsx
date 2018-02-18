@@ -11,9 +11,10 @@ export default function StringSetTensions (props) {
 
   const rows = strings.map(({gauge, weight}, index) => {
     const frequency = pitchFq(scientificNotation(tuning[index]))
+    const stringTuning = tuning[index]
 
-    return <tr key={index}>
-      <td>{tuning[index]}</td>
+    return <tr key={stringTuning}>
+      <td>{stringTuning}</td>
       <td>{gauge}</td>
       <td>{stringTension(weight, 25.5, frequency).toFixed(3)}</td>
     </tr>

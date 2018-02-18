@@ -12,6 +12,6 @@ export const DADDARIO_EXL110 = {
     strings.DADDARIO_NW026,
     strings.DADDARIO_PL017,
     strings.DADDARIO_PL013,
-    strings.DADDARIO_PL010,
+    strings.DADDARIO_PL010
   ]
 }

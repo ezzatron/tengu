@@ -1,7 +1,10 @@
 {
+  "private": true,
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-root-import": "^5.1.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
@@ -10,12 +13,63 @@
     "pitch-fq": "^1.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-redux": "^5.0.6",
+    "react-redux": "^5.0.7",
     "redux": "^3.7.2",
     "scientific-notation": "^1.0.2",
-    "webpack": "^3.10.0"
+    "webpack": "^3.11.0"
   },
   "devDependencies": {
-    "webpack-dev-server": "^2.9.7"
+    "babel-eslint": "^8.2.1",
+    "babel-plugin-istanbul": "^4.1.5",
+    "chai": "^4.1.2",
+    "dirty-chai": "^2.0.1",
+    "eslint": "^4.18.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-mocha": "^4.11.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.6.1",
+    "eslint-plugin-standard": "^3.0.1",
+    "mocha": "^5.0.1",
+    "nyc": "^11.4.1",
+    "webpack-dev-server": "^2.11.1"
+  },
+  "why": {
+    "dependencies": {
+      "babel-core": "Peer dependency of most babel libraries.",
+      "babel-loader": "Provides modern syntax support when bundling for the browser.",
+      "babel-plugin-root-import": "Allows modules to be imported relative to the project root directory.",
+      "babel-plugin-transform-object-rest-spread": "Adds support for the object rest spread operator syntax.",
+      "babel-polyfill": "Used to support modern browser features on older browsers.",
+      "babel-preset-env": "Dynamically adds support for modern syntax based upon the given environment.",
+      "babel-preset-react": "Adds support for JSX syntax.",
+      "html-webpack-plugin": "Automatically creates HTML for rendering the application.",
+      "immutable": "Provides useful immutable data types.",
+      "pitch-fq": "Calculates the frequency of notes.",
+      "react": "Used to compose the UI.",
+      "react-dom": "Renders the UI into a DOM node.",
+      "react-redux": "Integrates the application state with UI components.",
+      "redux": "Used for application state management.",
+      "scientific-notation": "Used to parse the scientific notation of musical notes.",
+      "webpack": "Bundles the application for the browser."
+    },
+    "devDependencies": {
+      "babel-eslint": "Provides modern syntax support when linting.",
+      "babel-plugin-istanbul": "Provides modern syntax support when creating test coverage reports.",
+      "chai": "Provides the test assertion API.",
+      "dirty-chai": "Used to allow chai assertions to pass lint checks.",
+      "eslint": "Used to lint source code.",
+      "eslint-config-standard": "Used as the basis of the linting configuration.",
+      "eslint-plugin-import": "Peer dependency of eslint-config-standard.",
+      "eslint-plugin-mocha": "Provides additional linting rules for Mocha tests.",
+      "eslint-plugin-node": "Peer dependency of eslint-config-standard.",
+      "eslint-plugin-promise": "Peer dependency of eslint-config-standard.",
+      "eslint-plugin-react": "Provides additional linting rules for React.",
+      "eslint-plugin-standard": "Peer dependency of eslint-config-standard.",
+      "mocha": "The test runner.",
+      "nyc": "Used to produce code coverage reports.",
+      "webpack-dev-server": "Used to serve the application for development."
+    }
   }
 }

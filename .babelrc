@@ -10,5 +10,16 @@
       }
     ],
     "react"
-  ]
+  ],
+  "plugins": [
+    "babel-plugin-root-import",
+    "babel-plugin-transform-object-rest-spread"
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "babel-plugin-istanbul"
+      ]
+    }
+  }
 }
