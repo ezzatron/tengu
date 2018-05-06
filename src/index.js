@@ -1,6 +1,6 @@
-import 'babel-polyfill'
+import '@babel/polyfill'
 
-import React from 'react'
+import domready from 'domready'
 import {createStore} from 'redux'
 import {render} from 'react-dom'
 
@@ -12,7 +12,8 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-render(
-  React.createElement(Root, {store}),
-  document.getElementById('app')
-)
+domready(() => {
+  const container = document.createElement('span')
+  document.body.appendChild(container)
+  render(Root({store}), container)
+})

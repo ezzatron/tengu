@@ -18,25 +18,29 @@ coverage-open: | artifacts/tests/coverage/index.html
 
 .PHONY: lint
 lint: node_modules
-	node_modules/.bin/eslint --fix --ext .js --ext .jsx .
+	node_modules/.bin/eslint --fix --ext .js --ext .jsx . --cache --cache-location artifacts/.eslintcache
 
-.PHONY: release-lint
-release-lint:: node_modules
-	node_modules/.bin/eslint --fix --ext .js --ext .jsx . --config .eslintrc.release.json
+.PHONY: prepare-lint
+prepare-lint:: node_modules
+	node_modules/.bin/eslint --fix --ext .js --ext .jsx . --cache --cache-location artifacts/.eslintcache --config .eslintrc.release.json
+
+.PHONY: ci-lint
+ci-lint:: node_modules
+	node_modules/.bin/eslint --ext .js --ext .jsx . --cache --cache-location artifacts/.eslintcache --config .eslintrc.release.json
 
 .PHONY: debug
 debug: node_modules $(SRC)
 	rm -rf web
-	node_modules/.bin/webpack --debug
+	node_modules/.bin/webpack --mode development
 
 .PHONY: release
 release: node_modules $(SRC)
 	rm -rf web
-	node_modules/.bin/webpack -p
+	node_modules/.bin/webpack --mode production
 
 .PHONY: run
 run: node_modules
-	node_modules/.bin/webpack-dev-server
+	node_modules/.bin/webpack-serve
 
 .PHONY: clean-all
 clean-all:: clean
@@ -51,10 +55,10 @@ clean-coverage:
 	rm -rf artifacts/tests/coverage
 
 .PHONY: prepare
-prepare: test release-lint
+prepare: test prepare-lint
 
 .PHONY: ci
-ci: test release-lint
+ci: test ci-lint
 
 node_modules: yarn.lock
 	yarn install

@@ -18,7 +18,7 @@ export function Tension (props) {
 export default connect(
   function mapStateToProps (state) {
     return {
-      set: getStringSet(state)
+      set: getStringSet(state),
     }
   }
 )(Tension)

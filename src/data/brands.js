@@ -1,3 +1,3 @@
 export const DADDARIO = {
-  name: "D'Addario"
+  name: "D'Addario",
 }

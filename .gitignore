@@ -1,4 +1,4 @@
 /artifacts/
+/dist/
 /node_modules/
-/web/
 /yarn-error.log

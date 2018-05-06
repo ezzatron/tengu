@@ -3,7 +3,7 @@ import {Record} from 'immutable'
 import * as actions from './actions'
 
 const AppState = Record({
-  stringSet: 'DADDARIO_EXL110'
+  stringSet: 'DADDARIO_EXL110',
 })
 
 const init = new AppState()

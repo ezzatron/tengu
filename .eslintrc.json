@@ -13,6 +13,7 @@
   "globals": {
   },
   "rules": {
+    "comma-dangle": ["error", "always-multiline"],
     "prefer-const": "error",
     "quote-props": ["error", "as-needed"],
 
@@ -24,18 +25,18 @@
         "style"
       ]
     }],
-    // "react/forbid-dom-props": ["error", { // this rule is not yet released, feel free to uncomment
-    //   "forbid": [
-    //     "bgcolor",
-    //     "border",
-    //     "color",
-    //     "height",
-    //     "style",
-    //     "width"
-    //   ]
-    // }],
+    "react/forbid-dom-props": ["error", {
+      "forbid": [
+        "bgcolor",
+        "border",
+        "color",
+        "height",
+        "style",
+        "width"
+      ]
+    }],
     "react/forbid-elements": ["error", {
-      "forbid": [ // mostly from https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Obsolete_and_deprecated_elements
+      "forbid": [
         "acronym",
         "applet",
         "b",
@@ -79,7 +80,6 @@
     "react/jsx-closing-bracket-location": ["error", {
       "location": "line-aligned"
     }],
-    // "react/jsx-closing-tag-location": "error", // waiting on https://github.com/yannickcr/eslint-plugin-react/issues/1466
     "react/jsx-curly-brace-presence": "error",
     "react/jsx-curly-spacing": "error",
     "react/jsx-equals-spacing": "error",
@@ -117,7 +117,7 @@
     "react/no-redundant-should-component-update": "error",
     "react/no-render-return-value": "error",
     "react/no-string-refs": "error",
-    // "react/no-this-in-sfc": "error", // this rule is not yet released, feel free to uncomment
+    "react/no-this-in-sfc": "error",
     "react/no-typos": "error",
     "react/no-unknown-property": "error",
     "react/no-unused-prop-types": "error",

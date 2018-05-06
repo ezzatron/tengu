@@ -1,37 +1,22 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const path = require('path')
+const HtmlPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: [
-    './src/index'
-  ],
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+  plugins: [new HtmlPlugin()],
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.css'],
   },
-  output: {
-    path: path.resolve(__dirname, 'web'),
-    filename: 'js/app.js'
-  },
-  devtool: 'source-map',
   module: {
     rules: [
       {
-        loader: 'babel-loader',
         test: /\.jsx?$/,
-        include: [
-          path.resolve(__dirname, 'src')
-        ]
-      }
-    ]
+        exclude: /node_modules/,
+        use: 'babel-loader',
+      },
+      {
+        test: /\.css?$/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Tengu',
-      template: 'src/index.html'
-    })
-  ],
-  devServer: {
-    contentBase: 'web',
-    historyApiFallback: true
-  }
 }

@@ -1,19 +1,19 @@
 {
   "presets": [
     [
-      "env", {
+      "@babel/preset-env", {
+        "shippedProposals": true,
         "useBuiltIns": "entry",
         "targets": {
-          "browsers": "last 2 versions",
+          "browsers": ["last 2 versions"],
           "node": "current"
         }
       }
     ],
-    "react"
+    "@babel/preset-react"
   ],
   "plugins": [
-    "babel-plugin-root-import",
-    "babel-plugin-transform-object-rest-spread"
+    "babel-plugin-root-import"
   ],
   "env": {
     "test": {
