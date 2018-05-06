@@ -1,17 +1,13 @@
-import pitchFq from 'pitch-fq'
 import React from 'react'
-import scientificNotation from 'scientific-notation'
 
 import {strings, TYPE_STEEL, TYPE_NICKEL_ROUND_WOUND} from '../data/strings'
-import {stringTension} from '../math'
+import {semitonesToFrequency, stringTension} from '../math'
 
 export default function StringTension (props) {
   const {string} = props
   const {tuning, type, gauge} = string
   const weight = strings[type][gauge]
-  const frequency = pitchFq(scientificNotation(tuning))
-
-  console.log(strings[type])
+  const frequency = semitonesToFrequency(tuning)
 
   return <tr>
     <td>{tuning}</td>

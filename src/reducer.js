@@ -1,5 +1,6 @@
 import {Record} from 'immutable'
 
+import {noteToSemitones} from './math'
 import {TYPE_STEEL, TYPE_NICKEL_ROUND_WOUND} from './data/strings'
 
 const StringSpec = Record({
@@ -10,12 +11,12 @@ const StringSpec = Record({
 
 const AppState = Record({
   strings: [
-    new StringSpec({tuning: 'E2', type: TYPE_NICKEL_ROUND_WOUND, gauge: '.046'}),
-    new StringSpec({tuning: 'A2', type: TYPE_NICKEL_ROUND_WOUND, gauge: '.036'}),
-    new StringSpec({tuning: 'D3', type: TYPE_NICKEL_ROUND_WOUND, gauge: '.026'}),
-    new StringSpec({tuning: 'G3', type: TYPE_STEEL, gauge: '.017'}),
-    new StringSpec({tuning: 'B3', type: TYPE_STEEL, gauge: '.013'}),
-    new StringSpec({tuning: 'E4', type: TYPE_STEEL, gauge: '.010'}),
+    new StringSpec({tuning: noteToSemitones('E2'), type: TYPE_NICKEL_ROUND_WOUND, gauge: '.046'}),
+    new StringSpec({tuning: noteToSemitones('A2'), type: TYPE_NICKEL_ROUND_WOUND, gauge: '.036'}),
+    new StringSpec({tuning: noteToSemitones('D3'), type: TYPE_NICKEL_ROUND_WOUND, gauge: '.026'}),
+    new StringSpec({tuning: noteToSemitones('G3'), type: TYPE_STEEL, gauge: '.017'}),
+    new StringSpec({tuning: noteToSemitones('B3'), type: TYPE_STEEL, gauge: '.013'}),
+    new StringSpec({tuning: noteToSemitones('E4'), type: TYPE_STEEL, gauge: '.010'}),
   ],
 }, 'AppState')
 

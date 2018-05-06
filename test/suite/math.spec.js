@@ -2,7 +2,7 @@ import pitchFq from 'pitch-fq'
 import scientificNotation from 'scientific-notation'
 import {expect} from 'chai'
 
-import {stringTension, decrementNote, incrementNote, noteToSemitones, semitonesToNote} from '~/src/math'
+import {stringTension, noteToSemitones, semitonesToNote} from '~/src/math'
 
 describe('Math functions', function () {
   describe('stringTension()', function () {
@@ -28,59 +28,6 @@ describe('Math functions', function () {
     })
   })
 
-  describe('decrementNote()', function () {
-    it('should reduce the note by 1 semitone', function () {
-      const data = {
-        Ab1: 'G1',
-        A1: 'Ab1',
-        B1: 'Bb1',
-        Bb1: 'A1',
-        C2: 'B1',
-        D2: 'Db2',
-        Db2: 'C2',
-        E2: 'Eb2',
-        Eb2: 'D2',
-        F1: 'E1',
-        G1: 'Gb1',
-        Gb1: 'F1',
-      }
-
-      Object.entries(data).forEach(([input, output]) => {
-        expect(decrementNote(input), input).to.equal(output)
-      })
-    })
-
-    it('should throw an error for invalid input', function () {
-      expect(() => decrementNote('H2')).to.throw('Invalid note.')
-    })
-  })
-
-  describe('incrementNote()', function () {
-    it('should increase the note by 1 semitone', function () {
-      const data = {
-        Ab1: 'A1',
-        A1: 'Bb1',
-        B1: 'C2',
-        Bb1: 'B1',
-        C2: 'Db2',
-        D2: 'Eb2',
-        Db2: 'D2',
-        E2: 'F2',
-        Eb2: 'E2',
-        F1: 'Gb1',
-        G1: 'Ab1',
-        Gb1: 'G1',
-      }
-
-      Object.entries(data).forEach(([input, output]) => {
-        expect(incrementNote(input), input).to.equal(output)
-      })
-    })
-
-    it('should throw an error for invalid input', function () {
-      expect(() => incrementNote('H2')).to.throw('Invalid note.')
-    })
-  })
   describe('noteToSemitones()', function () {
     it('should convert scientific notation to an amount of semitones relative to C0', function () {
       const data = {

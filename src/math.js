@@ -1,3 +1,6 @@
+import pitchFq from 'pitch-fq'
+import scientificNotation from 'scientific-notation'
+
 const MAGIC_CONSTANT = 386.4
 
 export function stringTension (weight, length, frequency) {
@@ -60,4 +63,8 @@ export function semitonesToNote (semitones) {
   const remainder = semitones % 12
 
   return SEMITONE_MAP[remainder] + octave
+}
+
+export function semitonesToFrequency (semitones) {
+  return pitchFq(scientificNotation(semitonesToNote(semitones)))
 }
