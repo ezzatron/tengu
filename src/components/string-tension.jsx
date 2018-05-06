@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {strings, TYPE_STEEL, TYPE_NICKEL_ROUND_WOUND} from '../data/strings'
-import {semitonesToFrequency, stringTension} from '../math'
+import {semitonesToFrequency, semitonesToNote, stringTension} from '../math'
 
 export default function StringTension (props) {
   const {string} = props
@@ -10,7 +10,7 @@ export default function StringTension (props) {
   const frequency = semitonesToFrequency(tuning)
 
   return <tr>
-    <td>{tuning}</td>
+    <td>{semitonesToNote(tuning)}</td>
     <td>{gauge}</td>
     <td>{stringTypeLabel(type)}</td>
     <td>{stringTension(weight, 25.5, frequency).toFixed(3)}</td>
