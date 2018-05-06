@@ -2,7 +2,7 @@ import pitchFq from 'pitch-fq'
 import scientificNotation from 'scientific-notation'
 import {expect} from 'chai'
 
-import {stringTension, decrementNote} from '~/src/math'
+import {stringTension, decrementNote, noteToSemitones, semitonesToNote} from '~/src/math'
 
 describe('Math functions', function () {
   describe('stringTension()', function () {
@@ -31,7 +31,8 @@ describe('Math functions', function () {
   describe('decrementNote()', function () {
     it('should reduce the note by 1 semitone', function () {
       const data = {
-        A1: 'G1',
+        Ab1: 'G1',
+        A1: 'Ab1',
         B1: 'Bb1',
         Bb1: 'A1',
         C2: 'B1',
@@ -45,12 +46,80 @@ describe('Math functions', function () {
       }
 
       Object.entries(data).forEach(([input, output]) => {
-        expect(decrementNote(input)).to.equal(output)
+        expect(decrementNote(input), input).to.equal(output)
       })
     })
 
     it('should throw an error for invalid input', function () {
       expect(() => decrementNote('H2')).to.throw('Invalid note.')
+    })
+  })
+
+  describe('noteToSemitones()', function () {
+    it('should convert scientific notation to an amount of semitones relative to C0', function () {
+      const data = {
+        C: 0,
+        'C#': 1,
+        Db: 1,
+        D: 2,
+        'D#': 3,
+        Eb: 3,
+        E: 4,
+        F: 5,
+        'F#': 6,
+        Gb: 6,
+        G: 7,
+        'G#': 8,
+        Ab: 8,
+        A: 9,
+        'A#': 10,
+        Bb: 10,
+        B: 11,
+
+        B3: 47,
+        C4: 48,
+
+        'E-1': -8,
+        E0: 4,
+        E1: 16,
+        E2: 28,
+
+        'Eb-1': -9,
+        Eb0: 3,
+        Eb1: 15,
+        Eb2: 27,
+
+        Bbb: 9,
+        Bx: 13,
+      }
+
+      Object.entries(data).forEach(([input, output]) => {
+        expect(noteToSemitones(input), input).to.equal(output)
+      })
+    })
+  })
+
+  describe('semitonesToNote()', function () {
+    it('should convert an amount of semitones relative to C0 into scientific notation', function () {
+      const data = {
+        0: 'C0',
+        1: 'Db0',
+        2: 'D0',
+        3: 'Eb0',
+        4: 'E0',
+        5: 'F0',
+        6: 'Gb0',
+        7: 'G0',
+        8: 'Ab0',
+        9: 'A0',
+        10: 'Bb0',
+        11: 'B0',
+        12: 'C1',
+      }
+
+      Object.entries(data).forEach(([input, output]) => {
+        expect(semitonesToNote(input), input).to.equal(output)
+      })
     })
   })
 })
