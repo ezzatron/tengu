@@ -26,7 +26,7 @@ export default connect(
     const {index} = props
 
     return bindActionCreators({
-      decrementStringTuning: () => decrementStringTuning(index),
+      decrementStringTuning: decrementStringTuning.bind(null, index),
     }, dispatch)
   }
 )(StringTension)
