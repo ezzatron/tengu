@@ -1,5 +1,9 @@
-import * as stringSets from './data/sets'
+import {sets, strings} from './data/strings'
 
 export function getStringSet (state) {
-  return stringSets[state.stringSet] || null
+  return sets[state.stringSet] || null
+}
+
+export function getString (string) {
+  return strings[string] || null
 }
