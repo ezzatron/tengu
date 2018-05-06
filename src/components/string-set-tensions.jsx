@@ -6,8 +6,10 @@ export default function StringSetTensions (props) {
   const {strings} = props
   let stringIndex = 0
 
-  const rows = strings.map((string, index) => {
-    return <StringTension key={stringIndex++} string={string} />
+  const rows = strings.map(string => {
+    const index = stringIndex++
+
+    return <StringTension key={index} string={string} index={index} />
   })
 
   return <table>
