@@ -2,7 +2,7 @@ import pitchFq from 'pitch-fq'
 import scientificNotation from 'scientific-notation'
 import {expect} from 'chai'
 
-import {stringTension, decrementNote, noteToSemitones, semitonesToNote} from '~/src/math'
+import {stringTension, decrementNote, incrementNote, noteToSemitones, semitonesToNote} from '~/src/math'
 
 describe('Math functions', function () {
   describe('stringTension()', function () {
@@ -55,6 +55,32 @@ describe('Math functions', function () {
     })
   })
 
+  describe('incrementNote()', function () {
+    it('should increase the note by 1 semitone', function () {
+      const data = {
+        Ab1: 'A1',
+        A1: 'Bb1',
+        B1: 'C2',
+        Bb1: 'B1',
+        C2: 'Db2',
+        D2: 'Eb2',
+        Db2: 'D2',
+        E2: 'F2',
+        Eb2: 'E2',
+        F1: 'Gb1',
+        G1: 'Ab1',
+        Gb1: 'G1',
+      }
+
+      Object.entries(data).forEach(([input, output]) => {
+        expect(incrementNote(input), input).to.equal(output)
+      })
+    })
+
+    it('should throw an error for invalid input', function () {
+      expect(() => incrementNote('H2')).to.throw('Invalid note.')
+    })
+  })
   describe('noteToSemitones()', function () {
     it('should convert scientific notation to an amount of semitones relative to C0', function () {
       const data = {

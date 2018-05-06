@@ -8,6 +8,10 @@ export function decrementNote (note) {
   return semitonesToNote(noteToSemitones(note) - 1)
 }
 
+export function incrementNote (note) {
+  return semitonesToNote(noteToSemitones(note) + 1)
+}
+
 const NOTE_PATTERN = /^([ABCDEFG])(x|#|bb|b?)(-\d+|\d*)$/
 const NOTE_MAP = {
   C: 0,
