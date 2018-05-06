@@ -2,7 +2,7 @@ import pitchFq from 'pitch-fq'
 import scientificNotation from 'scientific-notation'
 import {expect} from 'chai'
 
-import {stringTension} from '~/src/math'
+import {stringTension, decrementNote} from '~/src/math'
 
 describe('Math functions', function () {
   describe('stringTension()', function () {
@@ -25,6 +25,32 @@ describe('Math functions', function () {
       ].forEach(([weight, length, pitch, expected]) => {
         expect(stringTension(weight, length, pitchFq(scientificNotation(pitch)))).to.equal(expected)
       })
+    })
+  })
+
+  describe('decrementNote()', function () {
+    it('should reduce the note by 1 semitone', function () {
+      const data = {
+        A1: 'G1',
+        B1: 'Bb1',
+        Bb1: 'A1',
+        C2: 'B1',
+        D2: 'Db2',
+        Db2: 'C2',
+        E2: 'Eb2',
+        Eb2: 'D2',
+        F1: 'E1',
+        G1: 'Gb1',
+        Gb1: 'F1',
+      }
+
+      Object.entries(data).forEach(([input, output]) => {
+        expect(decrementNote(input)).to.equal(output)
+      })
+    })
+
+    it('should throw an error for invalid input', function () {
+      expect(() => decrementNote('H2')).to.throw('Invalid note.')
     })
   })
 })

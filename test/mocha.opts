@@ -1,4 +1,3 @@
---bail
 --reporter dot
---require babel-register
+--require @babel/register
 --require test/bootstrap
