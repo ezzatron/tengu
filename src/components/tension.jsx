@@ -1,24 +1,22 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {getStringSet} from '../selectors'
+import {getStrings} from '../reducer'
 
-import StringSetDescription from './string-set-description'
 import StringSetTensions from './string-set-tensions'
 
 export function Tension (props) {
-  const {set} = props
+  const {strings} = props
 
   return <div>
-    <div>Selected string set: <strong><StringSetDescription set={set} /></strong></div>
-    <div><StringSetTensions set={set} /></div>
+    <div><StringSetTensions strings={strings} /></div>
   </div>
 }
 
 export default connect(
   function mapStateToProps (state) {
     return {
-      set: getStringSet(state),
+      strings: getStrings(state),
     }
   }
 )(Tension)

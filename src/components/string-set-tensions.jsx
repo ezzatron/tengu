@@ -1,16 +1,13 @@
 import React from 'react'
 
-import {E_STANDARD as tuning} from '../data/tunings'
-
 import StringTension from './string-tension'
 
 export default function StringSetTensions (props) {
-  const {set} = props
-  const {strings} = set
+  const {strings} = props
   let stringIndex = 0
 
   const rows = strings.map((string, index) => {
-    return <StringTension key={stringIndex++} string={string} tuning={tuning[index]} />
+    return <StringTension key={stringIndex++} string={string} />
   })
 
   return <table>
@@ -18,6 +15,7 @@ export default function StringSetTensions (props) {
       <tr>
         <th>Note</th>
         <th>Gauge</th>
+        <th>Type</th>
         <th>Tension</th>
       </tr>
     </thead>
