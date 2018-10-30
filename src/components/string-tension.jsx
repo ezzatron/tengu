@@ -4,16 +4,21 @@ import {bindActionCreators} from 'redux'
 
 import {strings, TYPE_STEEL, TYPE_NICKEL_ROUND_WOUND} from '../data/strings'
 import {semitonesToFrequency, semitonesToNote, stringTension} from '../math'
-import {decrementStringTuning} from '../reducer'
+import {decrementStringTuning, incrementStringTuning} from '../reducer'
 
 export function StringTension (props) {
-  const {string, decrementStringTuning} = props
+  const {string, decrementStringTuning, incrementStringTuning} = props
   const {tuning, type, gauge} = string
   const weight = strings[type][gauge]
   const frequency = semitonesToFrequency(tuning)
 
   return <tr>
-    <td><button onClick={decrementStringTuning}>-</button> {semitonesToNote(tuning)}</td>
+    <td>
+      <button onClick={decrementStringTuning}>-</button>
+      {semitonesToNote(tuning)}
+      <button onClick={incrementStringTuning}>+</button>
+    </td>
+
     <td>{gauge}</td>
     <td>{stringTypeLabel(type)}</td>
     <td>{stringTension(weight, 25.5, frequency).toFixed(3)}</td>
@@ -27,6 +32,7 @@ export default connect(
 
     return bindActionCreators({
       decrementStringTuning: decrementStringTuning.bind(null, index),
+      incrementStringTuning: incrementStringTuning.bind(null, index),
     }, dispatch)
   }
 )(StringTension)

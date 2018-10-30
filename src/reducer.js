@@ -21,6 +21,7 @@ const AppState = Record({
 }, 'AppState')
 
 const DECREMENT_STRING_TUNING = 'DECREMENT_STRING_TUNING'
+const INCREMENT_STRING_TUNING = 'INCREMENT_STRING_TUNING'
 const init = new AppState()
 
 export default function reducer (state = init, {type, payload}) {
@@ -33,6 +34,15 @@ export default function reducer (state = init, {type, payload}) {
 
       return state.setIn(['strings', index, 'tuning'], string.tuning - 1)
     }
+
+    case INCREMENT_STRING_TUNING: {
+      const {index} = payload
+      const string = state.strings.get(index)
+
+      if (!string) return state
+
+      return state.setIn(['strings', index, 'tuning'], string.tuning + 1)
+    }
   }
 
   return state
@@ -40,6 +50,10 @@ export default function reducer (state = init, {type, payload}) {
 
 export function decrementStringTuning (index) {
   return {type: DECREMENT_STRING_TUNING, payload: {index}}
+}
+
+export function incrementStringTuning (index) {
+  return {type: INCREMENT_STRING_TUNING, payload: {index}}
 }
 
 export function getStrings (state) {
